@@ -118,21 +118,21 @@ const usedCars: UsedCarData[] = [
 ];
 
 const filterOptions = ["All Cars", "New Arrivals", "Featured"];
-const sortOptions   = ["Price: Low to High", "Price: High to Low", "Inspection Score", "Year: Newest"];
-const fuelOptions   = ["All Fuel Types", "Petrol", "Diesel", "Electric"];
+const sortOptions = ["Price: Low to High", "Price: High to Low", "Inspection Score", "Year: Newest"];
+const fuelOptions = ["All Fuel Types", "Petrol", "Diesel", "Electric"];
 
 // ── Main Component ─────────────────────────────────────────────────────────────
 export default function UsedCar() {
   const [activeFilter, setActiveFilter] = useState("All Cars");
-  const [activeSort,   setActiveSort]   = useState(sortOptions[0]);
-  const [activeFuel,   setActiveFuel]   = useState("All Fuel Types");
-  const [showFilters,  setShowFilters]  = useState(false);
+  const [activeSort, setActiveSort] = useState(sortOptions[0]);
+  const [activeFuel, setActiveFuel] = useState("All Fuel Types");
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredCars = usedCars.filter((car) => {
     const byFilter =
-      activeFilter === "All Cars"    ? true :
-      activeFilter === "New Arrivals" ? car.isNewArrival :
-      activeFilter === "Featured"    ? car.isFeatured   : true;
+      activeFilter === "All Cars" ? true :
+        activeFilter === "New Arrivals" ? car.isNewArrival :
+          activeFilter === "Featured" ? car.isFeatured : true;
     const byFuel = activeFuel === "All Fuel Types" ? true : car.fuel === activeFuel;
     return byFilter && byFuel;
   });
@@ -190,9 +190,9 @@ export default function UsedCar() {
                   onClick={() => setActiveFilter(f)}
                   className="px-4 py-1.5 rounded-full text-xs font-bold transition-all"
                   style={{
-                    background: activeFilter === f ? "#fe2c55"                                             : "color-mix(in srgb, var(--foreground) 7%, transparent)",
-                    color:      activeFilter === f ? "#fff"                                                 : "var(--foreground)",
-                    border:     activeFilter === f ? "1px solid #fe2c55" : "1px solid var(--border)",
+                    background: activeFilter === f ? "#fe2c55" : "color-mix(in srgb, var(--foreground) 7%, transparent)",
+                    color: activeFilter === f ? "#fff" : "var(--foreground)",
+                    border: activeFilter === f ? "1px solid #fe2c55" : "1px solid var(--border)",
                   }}
                 >{f}</button>
               ))}
@@ -206,9 +206,9 @@ export default function UsedCar() {
                   onClick={() => setActiveFuel(f)}
                   className="px-4 py-1.5 rounded-full text-xs font-bold transition-all"
                   style={{
-                    background: activeFuel === f ? "#fe2c55"                                           : "color-mix(in srgb, var(--foreground) 7%, transparent)",
-                    color:      activeFuel === f ? "#fff"                                               : "var(--foreground)",
-                    border:     activeFuel === f ? "1px solid #fe2c55" : "1px solid var(--border)",
+                    background: activeFuel === f ? "#fe2c55" : "color-mix(in srgb, var(--foreground) 7%, transparent)",
+                    color: activeFuel === f ? "#fff" : "var(--foreground)",
+                    border: activeFuel === f ? "1px solid #fe2c55" : "1px solid var(--border)",
                   }}
                 >{f}</button>
               ))}
@@ -222,9 +222,9 @@ export default function UsedCar() {
                   onClick={() => setActiveSort(s)}
                   className="px-4 py-1.5 rounded-full text-xs font-bold transition-all"
                   style={{
-                    background: activeSort === s ? "#fe2c55"                                          : "color-mix(in srgb, var(--foreground) 7%, transparent)",
-                    color:      activeSort === s ? "#fff"                                              : "var(--foreground)",
-                    border:     activeSort === s ? "1px solid #fe2c55" : "1px solid var(--border)",
+                    background: activeSort === s ? "#fe2c55" : "color-mix(in srgb, var(--foreground) 7%, transparent)",
+                    color: activeSort === s ? "#fff" : "var(--foreground)",
+                    border: activeSort === s ? "1px solid #fe2c55" : "1px solid var(--border)",
                   }}
                 >{s}</button>
               ))}
@@ -300,7 +300,7 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
         {/* Wishlist + Notify */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
           <button
-            onClick={() => toggleWishlist(car as Parameters<typeof toggleWishlist>[0])}
+            onClick={() => toggleWishlist({ ...car, odometer: car.kms } as any)}
             title="Add to Wishlist"
             className="p-2.5 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:scale-110 transition-transform"
           >
