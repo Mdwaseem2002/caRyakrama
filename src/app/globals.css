@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── Light Theme (default) ── */
+:root {
+  --background: #fdfdfd;
+  --foreground: #111827;
+  --card-bg: #ffffff;
+  --border: #e8e8e8;
+  --muted: #6b7280;
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --primary: #fe2c55;
+}
+
+/* ── Dark Theme (Luxury Dark) ── */
+html.dark {
+  --background: #080808; /* Deep sophisticated black, not absolute zero */
+  --foreground: #f3f4f6;
+  --card-bg: #111111; /* Slightly elevated from background */
+  --border: #262626; /* Softer, premium borders */
+  --muted: #8b8f97;
+  --navbar-bg: rgba(8, 8, 8, 0.95);
+  --primary: #fe2c55; /* Retained primary red for consistency, but fits well with dark tones */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), 'Inter', Arial, Helvetica, sans-serif;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: #ffffff;
+}
