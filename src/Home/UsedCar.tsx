@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Heart,
-  Bell,
   ShieldCheck,
   FileSearch,
   ArrowRight,
@@ -297,17 +296,14 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
           </span>
         </div>
 
-        {/* Wishlist + Notify */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
+        {/* Wishlist Save */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2 z-20">
           <button
             onClick={() => toggleWishlist({ ...car, odometer: car.kms } as any)}
             title="Add to Wishlist"
             className="p-2.5 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:scale-110 transition-transform"
           >
             <Heart className={`w-4 h-4 ${isSaved ? "fill-[#fe2c55] text-[#fe2c55]" : "text-gray-400"}`} />
-          </button>
-          <button title="Notify me of updates" className="p-2.5 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:scale-110 transition-transform">
-            <Bell className="w-4 h-4 text-gray-500" />
           </button>
         </div>
 
@@ -377,7 +373,7 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
         <div className="mt-auto flex flex-col gap-2.5 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
           {/* Primary: View Details */}
           <Link
-            href={`/cars/${car.id}`}
+            href={`/car/${car.id}`}
             className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{ background: "#fe2c55", boxShadow: "0 4px 14px rgba(254,44,85,0.3)" }}
           >
@@ -387,7 +383,7 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
 
           {/* Secondary: View Inspection Report */}
           <Link
-            href={`/cars/${car.id}/inspection`}
+            href={`/car/${car.id}/inspection`}
             className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.01]"
             style={{ background: "color-mix(in srgb, #fe2c55 8%, var(--card-bg))", color: "#fe2c55", border: "1px solid color-mix(in srgb, #fe2c55 25%, transparent)" }}
           >

@@ -78,35 +78,21 @@ export default function CarDetails({ id }: { id: string }) {
           {/* ── CAR OVERVIEW ── */}
           <div className="p-6 md:p-8 rounded-2xl md:rounded-[2rem] shadow-sm" style={{ backgroundColor: "var(--card-bg)", border: "1px solid var(--border)" }}>
             <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: "var(--foreground)" }}>Car Overview</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
               {[
                 { icon: Calendar,  iconBg: "#22c55e", label: "Year",             value: car.year },
                 { icon: Gauge,     iconBg: "#22c55e", label: "Mileage",          value: car.odometer },
                 { icon: Award,     iconBg: "#22c55e", label: "Warranty",         value: "Until 27-APR-2026 or Unlimited Kms" },
                 { icon: ShieldCheck, iconBg: "#06b6d4", label: "Service Contract", value: "Paid add-on" },
-              ].map(({ icon: Icon, iconBg, label, value }) => (
-                <div key={label} className="flex flex-col items-center text-center p-4 rounded-2xl" style={{ background: "var(--background)", border: "1px solid var(--border)" }}>
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-sm" style={{ backgroundColor: iconBg }}>
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <p className="text-xs font-bold mb-1" style={{ color: "var(--foreground)" }}>{label}</p>
-                  <p className="text-xs leading-snug" style={{ color: "var(--muted)" }}>{value}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Second row — 2 items */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 mt-3 md:mt-4 sm:col-start-1 sm:col-span-2">
-              {[
                 { icon: Wrench, iconBg: "#06b6d4", label: "Spec",      value: "GCC SPECS" },
                 { icon: Car,   iconBg: "#06b6d4", label: "Cylinders",  value: "4" },
               ].map(({ icon: Icon, iconBg, label, value }) => (
-                <div key={label} className="flex flex-col items-center text-center p-2 rounded-xl" style={{ background: "var(--background)", border: "1px solid var(--border)" }}>
-                  <div className="w-7 h-7 rounded-full flex items-center justify-center mb-1.5 shadow-sm" style={{ backgroundColor: iconBg }}>
-                    <Icon className="w-3.5 h-3.5 text-white" />
+                <div key={label} className="group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-default" style={{ background: "var(--background)", border: "1px solid var(--border)" }}>
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center mb-2 shadow-sm transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: iconBg }}>
+                    <Icon className="w-4 h-4 sm:w-4 sm:h-4 text-white" />
                   </div>
-                  <p className="text-[11px] font-bold mb-0.5" style={{ color: "var(--foreground)" }}>{label}</p>
-                  <p className="text-[10px] leading-snug" style={{ color: "var(--muted)" }}>{value}</p>
+                  <p className="text-[11px] sm:text-xs font-bold mb-0.5 sm:mb-1" style={{ color: "var(--foreground)" }}>{label}</p>
+                  <p className="text-[10px] sm:text-[11px] leading-snug" style={{ color: "var(--muted)" }}>{value}</p>
                 </div>
               ))}
             </div>

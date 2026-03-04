@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, Car } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ── Types ──────────────────────────────────────────────
@@ -67,7 +67,7 @@ const testimonials: Testimonial[] = [
     location: "Dubai, UAE",
     photo: "https://i.pravatar.cc/150?img=44",
     rating: 5,
-    text: "As a woman, I often felt intimidated at car dealerships. caRya.kRama's team treated me with full professionalism and gave me complete confidence in my decision. The car was exactly as listed — no surprises, no regrets.",
+    text: "As a woman, I often felt intimidated at car dealerships. caRya.kRama's team treated me with full professionalism and gave me complete confidence in my decision. The car was exactly as listed — no surprises, no regrets.I got a fantastic deal on a beautiful Porsche Cayenne.",
     car: "2023 Mercedes GLC",
     badge: "Verified Buyer",
   },
@@ -135,10 +135,11 @@ function TestimonialCard({ item, compact = false }: TestimonialCardProps) {
 
       {/* Car bought */}
       <div
-        className="text-[10px] md:text-xs font-bold px-2 py-1 rounded-full inline-block mb-3 w-fit"
+        className="text-[10px] md:text-xs font-bold px-2 py-1 rounded-full inline-flex items-center gap-1 mb-3 w-fit"
         style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)", color: "#fe2c55" }}
       >
-        🚗 {item.car}
+        <Car className="w-3 h-3 md:w-3.5 md:h-3.5" />
+        {item.car}
       </div>
 
       {/* Author */}
@@ -213,11 +214,11 @@ export default function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="rounded-2xl md:rounded-[2rem] p-4 md:p-12 grid md:grid-cols-2 gap-4 md:gap-10 items-center"
+              className="relative rounded-2xl md:rounded-[2rem] p-6 md:p-14 flex flex-col items-center justify-center overflow-hidden"
               style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
             >
-              {/* Left: text */}
-              <div>
+              {/* Content */}
+              <div className="relative flex flex-col items-center text-center z-10 w-full max-w-4xl">
                 <StarRating count={featured.rating} />
                 <blockquote
                   className="text-sm md:text-2xl font-semibold leading-relaxed mb-3 md:mb-6"
@@ -226,45 +227,28 @@ export default function Testimonials() {
                   &ldquo;{featured.text}&rdquo;
                 </blockquote>
                 <div
-                  className="text-[11px] md:text-sm font-bold px-3 py-1 md:px-4 md:py-2 rounded-full inline-flex items-center gap-1 mb-3 md:mb-6"
+                  className="text-[11px] md:text-sm font-bold px-3 py-1 md:px-4 md:py-2 rounded-full inline-flex items-center gap-1 mb-4 md:mb-8"
                   style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)", color: "#fe2c55" }}
                 >
-                  🚗 {featured.car}
+                  <Car className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                  {featured.car}
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 md:w-16 md:h-16 rounded-full overflow-hidden ring-2 ring-[#fe2c55]/30 shrink-0">
+                <div className="flex flex-col items-center gap-2 md:gap-3">
+                  <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden ring-2 ring-[#fe2c55]/30 shrink-0">
                     <Image src={featured.photo} alt={featured.name} fill className="object-cover" sizes="64px" />
                   </div>
-                  <div>
+                  <div className="text-center">
                     <p className="font-extrabold text-sm md:text-lg" style={{ color: "var(--foreground)" }}>{featured.name}</p>
                     <p className="text-[11px] md:text-sm" style={{ color: "var(--muted)" }}>{featured.role} · {featured.location}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Right: dot indicators */}
-              <div className="hidden md:flex flex-col items-center justify-center">
-                <Quote className="w-32 h-32 opacity-[0.06] rotate-180 mb-6" style={{ color: "#fe2c55" }} />
-                <div className="flex gap-2">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveIndex(i)}
-                      className="rounded-full transition-all duration-300"
-                      style={{
-                        width: i === activeIndex ? "2rem" : "0.5rem",
-                        height: "0.5rem",
-                        background: i === activeIndex ? "#fe2c55" : "var(--border)",
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Mobile dot indicators */}
-          <div className="mt-3 flex justify-center gap-2 md:hidden">
+          {/* Dot indicators */}
+          <div className="mt-4 md:mt-6 flex justify-center gap-2">
             {testimonials.map((_, i) => (
               <button
                 key={i}

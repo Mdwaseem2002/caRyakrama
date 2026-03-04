@@ -53,7 +53,7 @@ const secondaryCTAs = [
 export default function Hero() {
   const containerRef  = useRef<HTMLDivElement>(null);
   const group1Ref     = useRef<HTMLDivElement>(null);  // badge + headline
-  const group2Ref     = useRef<HTMLParagraphElement>(null); // subheadline
+  const group2Ref     = useRef<HTMLDivElement>(null); // subheadline + badge
   const group3Ref     = useRef<HTMLDivElement>(null);  // badges + CTAs
 
   useGSAP(() => {
@@ -127,22 +127,13 @@ export default function Hero() {
 
         {/* ── MAIN CONTENT (vertically centered in remaining space) ── */}
         <div
-          className="relative flex flex-col items-center justify-start flex-1 w-full px-4 pt-16 pb-10 text-center"
+          className="relative flex flex-col items-center justify-start flex-1 w-full px-4 pt-32 lg:pt-40 pb-10 text-center"
           style={{ zIndex: 10 }}
         >
           <div className="flex flex-col items-center gap-5 max-w-5xl w-full">
 
-            {/* ── GROUP 1: USP Badge + Headline ── */}
+            {/* ── GROUP 1: Headline ── */}
             <div ref={group1Ref} className="flex flex-col items-center gap-5">
-              {/* USP Badge */}
-              <div
-                className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white"
-                style={{ background: "rgba(255,255,255,0.10)", backdropFilter: "blur(8px)" }}
-              >
-                <span className="w-2 h-2 rounded-full bg-[#fe2c55] animate-pulse shrink-0" />
-                The Best — or Nothing.
-              </div>
-
               {/* Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-2xl">
                 Every Car You See is{" "}
@@ -153,28 +144,25 @@ export default function Hero() {
               </h1>
             </div>
 
-            {/* ── GROUP 2: Subheadline ── */}
-            <p ref={group2Ref} className="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-white font-medium drop-shadow-lg">
-              Say goodbye to wasted time and uncertainty. caRya.kRama brings you only the best —
-              inspected used cars you can trust.
-            </p>
+            {/* ── GROUP 2: Subheadline + USP Badge ── */}
+            <div ref={group2Ref} className="flex flex-col items-center gap-5">
+              <p className="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-white font-medium drop-shadow-lg">
+                Say goodbye to wasted time and uncertainty. caRya.kRama brings you only the best —
+                inspected used cars you can trust.
+              </p>
 
-            {/* ── GROUP 3: Trust Badges + CTAs ── */}
-            <div ref={group3Ref} className="flex flex-col items-center gap-5 w-full">
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center gap-3">
-                {trustBadges.map(({ icon: Icon, label }) => (
-                  <div
-                    key={label}
-                    className="trust-badge flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-xs sm:text-sm font-semibold text-white"
-                    style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(6px)" }}
-                  >
-                    <Icon className="w-4 h-4 text-[#fe2c55] shrink-0" />
-                    {label}
-                  </div>
-                ))}
+              {/* USP Badge */}
+              <div
+                className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white"
+                style={{ background: "rgba(255,255,255,0.10)", backdropFilter: "blur(8px)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#fe2c55] animate-pulse shrink-0" />
+                The Best — or Nothing.
               </div>
+            </div>
 
+            {/* ── GROUP 3: Primary CTA + Trust Badges ── */}
+            <div ref={group3Ref} className="flex flex-col items-center gap-7 w-full mt-8 lg:mt-12">
               {/* Primary CTA */}
               <Link
                 href="#used-cars"
@@ -188,21 +176,21 @@ export default function Hero() {
                 Explore Used Cars
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-
-              {/* Secondary CTA row */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                {secondaryCTAs.map(({ icon: Icon, label, href }) => (
-                  <Link
+              
+              {/* Trust Badges */}
+              <div className="flex flex-wrap justify-center gap-3 mt-10 lg:mt-14 w-full max-w-4xl">
+                {trustBadges.map(({ icon: Icon, label }) => (
+                  <div
                     key={label}
-                    href={href}
-                    className="hero-cta-btn flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/15 hover:border-white/40 transition-all duration-300 hover:scale-105"
-                    style={{ background: "rgba(255,255,255,0.09)", backdropFilter: "blur(8px)" }}
+                    className="trust-badge flex justify-center items-center gap-2 px-4 py-2.5 rounded-full border border-white/15 text-xs sm:text-sm font-semibold text-white w-auto sm:w-[220px]"
+                    style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(6px)" }}
                   >
-                    <Icon className="w-4 h-4 text-white shrink-0" />
-                    <span className="text-xs sm:text-sm font-semibold text-white whitespace-nowrap">{label}</span>
-                  </Link>
+                    <Icon className="w-4 h-4 text-[#fe2c55] shrink-0" />
+                    <span className="truncate">{label}</span>
+                  </div>
                 ))}
               </div>
+
             </div>
 
           </div>

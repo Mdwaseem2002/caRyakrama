@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Heart, ShieldCheck, ArrowRight, CheckCircle2, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWishlist } from "@/context/WishlistContext";
 
@@ -114,35 +115,57 @@ export const cars = [
 ];
 
 export default function Card() {
+  const [showFilters, setShowFilters] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("All Cars");
+
   return (
     <section className="min-h-screen py-20 px-4 md:px-8 max-w-7xl mx-auto" style={{ background: "var(--background)" }}>
       {/* ── HEADER ── */}
-      <div className="text-center md:text-left mb-16 max-w-3xl">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight items-baseline" style={{ color: "var(--foreground)" }}>
-          Only Inspected Cars. <br className="hidden md:block"/>
-          <span style={{ color: "#fe2c55" }}>Every Detail Checked.</span>
-        </h2>
-        <p className="text-lg md:text-xl font-medium" style={{ color: "var(--muted)" }}>
-          Handpicked for Enthusiasts Who Demand the Best.
-        </p>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div className="text-left max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-3 leading-tight tracking-tight items-baseline" style={{ color: "var(--foreground)" }}>
+            Only Inspected Cars. <br className="hidden md:block"/>
+            <span style={{ color: "#fe2c55" }}>Every Detail Checked.</span>
+          </h2>
+          <p className="text-lg md:text-xl font-medium" style={{ color: "var(--muted)" }}>
+            Handpicked for Enthusiasts Who Demand the Best.
+          </p>
+        </div>
         
-        {/* Simple Filters Placeholder (UI Only as requested) */}
-        <div className="mt-8 flex flex-wrap gap-3 justify-center md:justify-start">
+        {/* Filters Button */}
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-[18px] text-sm font-bold border transition-all hover:scale-105 shrink-0 self-start md:self-auto mt-2 md:mt-0"
+          style={{ borderColor: "var(--border)", color: "var(--foreground)", background: "var(--card-bg)" }}
+        >
+          <SlidersHorizontal className="w-4 h-4" />
+          Filters & Sort
+          <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? "rotate-180" : ""}`} />
+        </button>
+      </div>
+
+      {showFilters && (
+        <motion.div
+           initial={{ opacity: 0, y: -10 }}
+           animate={{ opacity: 1, y: 0 }}
+           className="flex flex-wrap gap-3 justify-center md:justify-start mb-12"
+        >
           {["All Cars", "Price: Low to High", "Highest Rated", "SUVs", "Sedans"].map((filter, i) => (
             <button
               key={i}
+              onClick={() => setActiveFilter(filter)}
               className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
-                i === 0 
+                activeFilter === filter 
                   ? "border-[#fe2c55] bg-[#fe2c55] text-white shadow-md shadow-[#fe2c55]/20" 
                   : "hover:border-[#fe2c55] hover:text-[#fe2c55]"
               }`}
-              style={i === 0 ? {} : { borderColor: "var(--border)", color: "var(--foreground)", background: "var(--card-bg)" }}
+              style={activeFilter === filter ? {} : { borderColor: "var(--border)", color: "var(--foreground)", background: "var(--card-bg)" }}
             >
               {filter}
             </button>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      )}
 
       {/* ── GRID ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

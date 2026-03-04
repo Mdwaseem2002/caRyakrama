@@ -14,7 +14,7 @@ export default function Navbar() {
   const isDark = theme === "dark";
 
   const navLinks = [
-    { label: 'Caryakrama', href: '/' },
+    { label: 'caRya.krama', href: '/' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Testimonials', href: '/testimonials' },
     { label: 'Wishlist', href: '/wishlist' },

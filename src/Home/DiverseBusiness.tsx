@@ -126,22 +126,20 @@ export default function DiverseBusiness() {
                 {/* Connecting drop line for mobile/tablet */}
                 <div className="diverse-line block md:hidden absolute -top-20 w-[1px] h-20 bg-[#00b4d8]/50 z-0"></div>
 
-                {/* Diamond Image Container */}
+                {/* Image Container */}
                 <div 
-                  className="w-40 h-40 md:w-48 md:h-48 transform rotate-45 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[5px] border-white overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-105 z-10 bg-white"
+                  className="relative w-48 h-36 md:w-56 md:h-40 rounded-[1.25rem] md:rounded-[1.5rem] border-[4px] md:border-[5px] border-white overflow-hidden shadow-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl z-10 bg-white"
                 >
-                  <div className="w-[150%] h-[150%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45">
-                    <img 
-                      src={business.img} 
-                      alt={business.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
+                  <img 
+                    src={business.img} 
+                    alt={business.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
 
                 {/* Title */}
                 <h3 
-                  className="mt-12 md:mt-14 text-center text-sm md:text-[15px] font-semibold px-2 tracking-wide"
+                  className="mt-5 md:mt-6 text-center text-sm md:text-[15px] font-semibold px-2 tracking-wide"
                   style={{ color: "var(--foreground, #1f2937)" }}
                 >
                   {business.title}

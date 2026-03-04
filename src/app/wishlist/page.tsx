@@ -35,26 +35,26 @@ export default function WishlistPage() {
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-3 md:gap-4 shrink-0 mt-2 md:mt-0 ml-12 md:ml-0">
+        <div className="flex items-center gap-2 md:gap-4 shrink-0 mt-3 md:mt-0 w-full md:w-auto">
           <button 
             onClick={() => setNotificationsEnabled(!notificationsEnabled)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+            className={`flex items-center justify-center gap-1.5 md:gap-2 px-3.5 md:px-5 py-2 md:py-2.5 rounded-[18px] md:rounded-full text-[11px] md:text-sm font-bold transition-all text-center leading-tight max-w-[120px] md:max-w-none ${
               notificationsEnabled 
                 ? 'bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20' 
                 : 'bg-gray-100 text-gray-500 border border-gray-200 dark:bg-zinc-800 dark:text-gray-400 dark:border-zinc-700'
             }`}
           >
-            <Bell className={`w-4 h-4 ${notificationsEnabled ? 'fill-current' : ''}`} />
-            {notificationsEnabled ? 'Alerts On' : 'Alerts Off'}
+            <Bell className={`w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 block ${notificationsEnabled ? 'fill-current' : ''}`} />
+            <span className="md:whitespace-nowrap">{notificationsEnabled ? 'Alerts On' : 'Alerts Off'}</span>
           </button>
           
           {!isLoggedIn && (
             <button 
               onClick={() => setIsLoggedIn(true)}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-[#fe2c55]"
+              className="flex items-center justify-center gap-1.5 md:gap-2 px-4 md:px-6 py-2 md:py-2.5 rounded-[18px] md:rounded-full text-[11px] md:text-sm font-bold transition-all text-white shadow-sm hover:shadow-md hover:-translate-y-0.5 bg-[#fe2c55] text-center leading-tight flex-1 md:flex-none"
             >
-              <Lock className="w-4 h-4" />
-              Sign In to Save permanently
+              <Lock className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 block" />
+              <span className="md:whitespace-nowrap">Sign In to Save permanently</span>
             </button>
           )}
         </div>
