@@ -6,6 +6,12 @@ import Link from "next/link";
 import { Heart, ShieldCheck, ArrowRight, CheckCircle2, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWishlist } from "@/context/WishlistContext";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const cars = [
   // First 3
@@ -181,18 +187,39 @@ export default function Card() {
 function CarCard({ car, index }: { car: typeof cars[0], index: number }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const isSaved = isInWishlist(car.id);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!cardRef.current) return;
+
+    const row = Math.floor(index / 3);
+    const xOffset = row % 2 === 0 ? -100 : 100;
+
+    gsap.fromTo(cardRef.current, 
+      { 
+        opacity: 0, 
+        x: xOffset 
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+          // markers: true, // Uncomment for debugging
+        }
+      }
+    );
+  }, { scope: cardRef });
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ 
-        duration: 0.5, 
-        delay: index * 0.1,
-        ease: "easeOut" 
-      }}
-      className="group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full bg-white"
+    <div
+      ref={cardRef}
+      className="group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full bg-white"
       style={{ backgroundColor: "var(--card-bg)", border: "1px solid var(--border)" }}
     >
       {/* ── IMAGE SECTION ── */}
@@ -289,6 +316,6 @@ function CarCard({ car, index }: { car: typeof cars[0], index: number }) {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -284,7 +284,7 @@ export default function Footer() {
       <div ref={bottomRef} className="max-w-7xl mx-auto px-6 py-6 border-t" style={{ borderColor: border }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-sm font-medium" style={{ color: muted }}>
-            © {new Date().getFullYear()} <span className="font-bold" style={{ color: textTitle }}>caRya.kRama</span>. All rights reserved.
+            © {new Date().getFullYear()} <span className="font-bold" style={{ color: textTitle }}>caRya.krama</span>. All rights reserved.
           </p>
           <div className="flex items-center gap-6 justify-center">
             <span className="text-sm font-medium flex items-center gap-1.5" style={{ color: muted }}>

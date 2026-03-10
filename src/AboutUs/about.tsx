@@ -1,5 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { ShieldCheck, Search, Wrench, ThumbsUp } from "lucide-react";
+import { ShieldCheck, Search, Wrench, ThumbsUp, ClipboardList, Coins, Target } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const steps = [
@@ -41,9 +49,8 @@ export default function About() {
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6" style={{ color: "var(--foreground)" }}>
           Our <span style={{ color: "#fe2c55" }}>Vision.</span>
         </h1>
-        
         <p className="text-lg md:text-2xl leading-relaxed max-w-4xl mx-auto font-medium" style={{ color: "var(--foreground)" }}>
-          “caRya.kRama exists to save your time and restore trust in car buying. Every car is inspected, curated, and presented with transparency — so you can focus on what matters: finding the perfect vehicle.”
+          “caRya.krama exists to save your time and restore trust in car buying. Every car is inspected, curated, and presented with transparency — so you can focus on what matters: finding the perfect vehicle.”
         </p>
       </div>
 
@@ -63,6 +70,67 @@ export default function About() {
           <p className="text-white/90 text-sm md:text-base font-medium max-w-xl">Curating only the most premium, inspected vehicles for our discerning clientele.</p>
         </div>
       </div>
+
+      {/* ── QUALITY STANDARDS SECTION ── */}
+      <section 
+        className="mb-24 px-4 overflow-hidden" 
+        id="quality-standards"
+      >
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black mb-6" style={{ color: "var(--foreground)" }}>
+            Only the Best Cars Make It to <span style={{ color: "#fe2c55" }}>caRya.krama</span>
+          </h2>
+          <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed text-sm md:text-base">
+            At caRya.krama, we believe buying a car should come with complete confidence and transparency. 
+            That’s why not every car makes it onto our platform.
+          </p>
+        </div>
+
+        <div className="quality-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+          {[
+            {
+              title: "Expert Inspection",
+              desc: "Every vehicle is thoroughly examined by our certified specialists — our Car-Diologists.",
+              icon: Search
+            },
+            {
+              title: "Verified Reports",
+              desc: "Only cars that successfully pass the inspection process with a valid report qualify.",
+              icon: ClipboardList
+            },
+            {
+              title: "Competitive Pricing",
+              desc: "Listed only if pricing is competitive and fair within the current market.",
+              icon: Coins
+            },
+            {
+              title: "Curated Listings",
+              desc: "Vehicles that meet our quality benchmarks earned a place on our platform.",
+              icon: Target
+            }
+          ].map((item, idx) => (
+            <div 
+              key={idx}
+              className="quality-card flex flex-col items-center gap-5 p-8 rounded-[2rem] border transition-all duration-300 hover:shadow-2xl text-center"
+              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}
+            >
+              <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#fe2c55]/10 flex items-center justify-center">
+                <item.icon className="w-8 h-8 text-[#fe2c55]" strokeWidth={2} />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 uppercase tracking-wide" style={{ color: "var(--foreground)" }}>{item.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 p-8 rounded-[2rem] text-center border bg-[#fe2c55]/5 border-[#fe2c55]/20">
+          <p className="font-bold text-lg md:text-xl" style={{ color: "var(--foreground)" }}>
+            In short: <span className="text-[#fe2c55]">If a car is listed on caRya.krama, it has been inspected, verified, and valued.</span>
+          </p>
+        </div>
+      </section>
 
       {/* ── TIMELINE / INFOGRAPHIC SECTION ── */}
       <div className="mb-20">

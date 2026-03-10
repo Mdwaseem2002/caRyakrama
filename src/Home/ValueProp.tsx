@@ -13,7 +13,7 @@ const valueProps = [
   },
   {
     id: 2,
-    title: "30-Day Return Policy",
+    title: "Gearbox and Engine Warranty",
     description: "Confidence in every purchase. Test your car in real-world conditions with complete peace of mind.",
     icon: RefreshCw,
     color: "#3b82f6", // Blue
@@ -78,7 +78,7 @@ export default function ValueProp() {
               className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4"
               style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)", color: "#fe2c55" }}
             >
-              The caRya.kRama Difference
+              The caRya.krama Difference
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold mb-6" style={{ color: "var(--foreground)" }}>
               Built on Trust. Driven by <span style={{ color: "#fe2c55" }}>Quality.</span>
@@ -110,13 +110,26 @@ export default function ValueProp() {
                 style={{ background: `linear-gradient(135deg, ${prop.color}, transparent)` }}
               />
 
-              {/* Icon */}
+              {/* Icon Container with 3D Perspective */}
               <div 
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm transition-transform duration-300 group-hover:scale-110"
-                style={{ background: `color-mix(in srgb, ${prop.color} 15%, var(--background))` }}
+                className="w-14 h-14 rounded-2xl mb-6 shadow-sm flex items-center justify-center transition-all duration-300"
+                style={{ 
+                  background: `color-mix(in srgb, ${prop.color} 15%, var(--background))`,
+                  perspective: "1000px"
+                }}
               >
-                {/* Fallback to text color if color is missing, though they are all defined */}
-                <prop.icon className="w-7 h-7" style={{ color: prop.color }} />
+                <motion.div
+                  whileHover={{ 
+                    rotateX: 15, 
+                    rotateY: 15, 
+                    z: 20,
+                    scale: 1.1
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <prop.icon className="w-7 h-7" style={{ color: prop.color }} />
+                </motion.div>
               </div>
 
               {/* Content */}

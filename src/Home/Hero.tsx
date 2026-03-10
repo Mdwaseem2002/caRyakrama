@@ -134,6 +134,26 @@ export default function Hero() {
 
             {/* ── GROUP 1: Headline ── */}
             <div ref={group1Ref} className="flex flex-col items-center gap-5">
+              {/* Powered By Badge */}
+              <div
+                className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 text-[10px] font-black tracking-[0.2em] uppercase text-white mb-2 shadow-2xl"
+                style={{ 
+                  background: "rgba(0,0,0,0.45)", 
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255,255,255,0.12)"
+                }}
+              >
+                <ShieldCheck className="w-4 h-4 text-[#3b82f6]" strokeWidth={2.5} />
+                <span style={{ 
+                  background: "linear-gradient(90deg, #E2E8F0 0%, #FFFFFF 50%, #E2E8F0 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  letterSpacing: "0.25em"
+                }}>
+                  Powered by Cardiolist
+                </span>
+              </div>
+
               {/* Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-2xl">
                 Every Car You See is{" "}
@@ -147,7 +167,7 @@ export default function Hero() {
             {/* ── GROUP 2: Subheadline + USP Badge ── */}
             <div ref={group2Ref} className="flex flex-col items-center gap-5">
               <p className="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-white font-medium drop-shadow-lg">
-                Say goodbye to wasted time and uncertainty. caRya.kRama brings you only the best —
+                Say goodbye to wasted time and uncertainty. caRya.krama brings you only the best —
                 inspected used cars you can trust.
               </p>
 

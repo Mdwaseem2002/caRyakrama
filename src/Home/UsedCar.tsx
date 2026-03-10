@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWishlist } from "@/context/WishlistContext";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface UsedCarData {
@@ -261,14 +267,38 @@ export default function UsedCar() {
 function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const isSaved = isInWishlist(car.id);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!cardRef.current) return;
+
+    const row = Math.floor(index / 3);
+    const xOffset = row % 2 === 0 ? -100 : 100;
+
+    gsap.fromTo(cardRef.current, 
+      { 
+        opacity: 0, 
+        x: xOffset 
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        }
+      }
+    );
+  }, { scope: cardRef });
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
-      className="group relative rounded-[1.75rem] overflow-hidden flex flex-col h-full hover:shadow-2xl transition-all duration-300"
+    <div
+      ref={cardRef}
+      className="group relative rounded-[1.75rem] overflow-hidden flex flex-col h-full hover:shadow-2xl transition-shadow duration-300"
       style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
     >
       {/* ── IMAGE ── */}
@@ -393,6 +423,6 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

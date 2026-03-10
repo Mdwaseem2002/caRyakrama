@@ -34,7 +34,7 @@ const testimonials: Testimonial[] = [
     location: "Dubai, UAE",
     photo: "https://i.pravatar.cc/150?img=12",
     rating: 5,
-    text: "I was terrified of buying a used car — stories of hidden damage and fake paperwork scared me for years. caRya.kRama changed everything. The inspection report was thorough, the team was honest, and I drove away in my dream car without a single worry.",
+    text: "I was terrified of buying a used car — stories of hidden damage and fake paperwork scared me for years. caRya.krama changed everything. The inspection report was thorough, the team was honest, and I drove away in my dream car without a single worry.",
     car: "2021 BMW 3 Series",
     badge: "Verified Buyer",
   },
@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
     location: "Sharjah, UAE",
     photo: "https://i.pravatar.cc/150?img=33",
     rating: 5,
-    text: "The difference between caRya.kRama and other dealers? Respect. They respected my time, my budget, and my intelligence. No pushy sales tactics — just honest guidance. My Audi A6 is exactly as described: pristine condition, fair price.",
+    text: "The difference between caRya.krama and other dealers? Respect. They respected my time, my budget, and my intelligence. No pushy sales tactics — just honest guidance. My Audi A6 is exactly as described: pristine condition, fair price.",
     car: "2020 Audi A6",
     badge: "Verified Buyer",
   },
@@ -67,7 +67,7 @@ const testimonials: Testimonial[] = [
     location: "Dubai, UAE",
     photo: "https://i.pravatar.cc/150?img=44",
     rating: 5,
-    text: "As a woman, I often felt intimidated at car dealerships. caRya.kRama's team treated me with full professionalism and gave me complete confidence in my decision. The car was exactly as listed — no surprises, no regrets.I got a fantastic deal on a beautiful Porsche Cayenne.",
+    text: "As a woman, I often felt intimidated at car dealerships. caRya.krama's team treated me with full professionalism and gave me complete confidence in my decision. The car was exactly as listed — no surprises, no regrets.I got a fantastic deal on a beautiful Porsche Cayenne.",
     car: "2023 Mercedes GLC",
     badge: "Verified Buyer",
   },
@@ -78,7 +78,7 @@ const testimonials: Testimonial[] = [
     location: "Dubai, UAE",
     photo: "https://i.pravatar.cc/150?img=15",
     rating: 5,
-    text: "I did months of research online and kept hitting shady listings. Then a friend recommended caRya.kRama. Within one week I found, inspected, and purchased my perfect car. The process was seamless — like buying from a trusted friend who happens to be a car expert.",
+    text: "I did months of research online and kept hitting shady listings. Then a friend recommended caRya.krama. Within one week I found, inspected, and purchased my perfect car. The process was seamless — like buying from a trusted friend who happens to be a car expert.",
     car: "2021 Toyota Land Cruiser",
     badge: "Referred Customer",
   },
@@ -89,7 +89,7 @@ const testimonials: Testimonial[] = [
     location: "Abu Dhabi, UAE",
     photo: "https://i.pravatar.cc/150?img=39",
     rating: 5,
-    text: "I relocated to UAE and had no local knowledge of the car market. caRya.kRama guided me through every step, explained regulations, helped me compare options, and never pressured me. I got a fantastic deal on a beautiful Porsche Cayenne.",
+    text: "I relocated to UAE and had no local knowledge of the car market. caRya.krama guided me through every step, explained regulations, helped me compare options, and never pressured me. I got a fantastic deal on a beautiful Porsche Cayenne.",
     car: "2020 Porsche Cayenne",
     badge: "New Customer",
   },
@@ -189,7 +189,7 @@ export default function Testimonials() {
           <span style={{ color: "#fe2c55" }}>Refuse Compromise.</span>
         </h1>
         <p className="text-sm md:text-xl max-w-2xl mx-auto px-2" style={{ color: "var(--muted)" }}>
-          Real stories from real buyers who found confidence, ease, and their perfect car through caRya.kRama.
+          Real stories from real buyers who found confidence, ease, and their perfect car through caRya.krama.
         </p>
       </div>
 
