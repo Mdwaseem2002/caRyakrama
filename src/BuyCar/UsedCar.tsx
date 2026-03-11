@@ -370,8 +370,8 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
   return (
     <div
       ref={cardRef}
-      className="group relative rounded-[1.75rem] overflow-hidden flex flex-col h-full hover:shadow-2xl transition-shadow duration-300"
-      style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+      className="group relative rounded-[2rem] overflow-hidden flex flex-col h-full hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 ease-out"
+      style={{ background: "var(--card-bg)", border: "1.5px solid var(--border)" }}
     >
       {/* ── IMAGE ── */}
       <div className="relative aspect-[16/11] w-full overflow-hidden">
@@ -380,76 +380,72 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
 
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2 z-10 pointer-events-none">
+        {/* Badges container */}
+        <div className="absolute top-4 left-4 flex flex-col gap-2 z-10 pointer-events-none">
           {car.isNewArrival && (
-            <span className="bg-[#fe2c55] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">
+            <div className="bg-[#fe2c55] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg w-fit">
               New Arrival
-            </span>
+            </div>
           )}
           {car.isFeatured && (
-            <span className="bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">
+            <div className="bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg w-fit">
               ⭐ Featured
-            </span>
+            </div>
           )}
-          <span className="bg-white/95 text-[#111] text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5 w-fit border border-gray-100">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-            {car.inspectionScore}
-          </span>
+          <div className="bg-white/95 backdrop-blur-sm text-[#111827] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-gray-100 w-fit">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#10b981]" />
+            Score: {car.inspectionScore}
+          </div>
         </div>
 
-        {/* Wishlist Save */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 z-20">
+        {/* Wishlist Button */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2 z-20">
           <button
             onClick={() => toggleWishlist({ ...car, odometer: car.kms } as any)}
             title="Add to Wishlist"
             className="p-2.5 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:scale-110 transition-transform"
           >
-            <Heart className={`w-4 h-4 ${isSaved ? "fill-[#fe2c55] text-[#fe2c55]" : "text-gray-400"}`} />
+            <Heart className={`w-4 h-4 transition-colors ${isSaved ? "fill-[#fe2c55] text-[#fe2c55]" : "text-gray-400"}`} />
           </button>
         </div>
 
-        {/* ── HOVER INSPECTION PREVIEW ── */}
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center px-7 z-10">
-          <div className="flex items-center gap-2 mb-4">
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
-            <span className="text-white font-bold text-base">Inspection Summary</span>
-          </div>
-          <ul className="space-y-2.5">
+        {/* ── HOVER: INSPECTION PREVIEW ── */}
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-8 z-10">
+          <h4 className="text-white font-bold mb-5 flex items-center gap-2 text-lg">
+            <ShieldCheck className="w-5 h-5 text-[#10b981]" />
+            Inspection Summary
+          </h4>
+          <ul className="space-y-3">
             {car.inspectionSummary.map((point, i) => (
-              <li key={i} className="flex items-start gap-2 text-gray-200 text-sm">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <li key={i} className="text-gray-200 text-sm flex items-start gap-3">
+                <CheckCircle2 className="w-4 h-4 text-[#10b981] mt-0.5 shrink-0" />
                 {point}
               </li>
             ))}
           </ul>
-          <div className="mt-5 flex items-center gap-2 text-xs font-bold text-white/60">
+          <div className="mt-8 flex items-center gap-2 text-[11px] font-bold text-white uppercase tracking-widest border-t border-white/20 pt-4">
             <Lock className="w-3.5 h-3.5" />
             Full report available for {car.reportPrice}
           </div>
         </div>
       </div>
 
-      {/* ── CONTENT ── */}
-      <div className="p-5 flex flex-col flex-grow" style={{ background: "var(--card-bg)" }}>
+      {/* ── CONTENT SECTION ── */}
+      <div className="p-6 flex flex-col flex-grow relative z-10" style={{ background: "var(--card-bg)" }}>
 
-        <div className="flex items-start justify-between gap-2 mb-1.5">
-          <h3 className="font-extrabold text-[17px] leading-tight group-hover:text-[#fe2c55] transition-colors line-clamp-1" style={{ color: "var(--foreground)" }}>
+        <div className="flex justify-between items-start mb-3 gap-3">
+          <h3 className="font-extrabold text-xl leading-tight line-clamp-1 group-hover:text-[#fe2c55] transition-colors" style={{ color: "var(--foreground)" }}>
             {car.name}
           </h3>
-          <span className="text-xs font-bold px-2 py-1 rounded-lg shrink-0" style={{ background: "color-mix(in srgb, var(--foreground) 8%, transparent)", color: "var(--foreground)" }}>
+          <span className="font-bold text-sm shrink-0 px-2.5 py-1 rounded-lg" style={{ background: "color-mix(in srgb, var(--foreground) 8%, transparent)", color: "var(--foreground)" }}>
             {car.year}
           </span>
         </div>
 
-        {/* Specs row */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold uppercase tracking-wider mb-4" style={{ color: "var(--muted)" }}>
+        {/* Specs Row */}
+        <div className="flex items-center gap-2 text-xs font-bold mb-6 uppercase tracking-wider" style={{ color: "var(--muted)" }}>
           <span>{car.kms}</span>
-          <span className="w-1 h-1 rounded-full bg-gray-300" />
-          <span>{car.fuel}</span>
-          <span className="w-1 h-1 rounded-full bg-gray-300" />
-          <span>{car.transmission}</span>
-          <span className="w-1 h-1 rounded-full bg-gray-300" />
+          <span className="w-1 h-1 rounded-full bg-gray-300"></span>
           <span>{car.condition}</span>
         </div>
 
@@ -471,20 +467,21 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
           {car.location}
         </p>
 
-        {/* CTAs */}
+        {/* Bottom Row / CTA */}
         <div className="mt-auto flex items-end justify-between pt-5" style={{ borderTop: "1px solid var(--border)" }}>
-          <div className="flex flex-col">
+          <div>
             <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--muted)" }}>Cash Price</p>
             <p className="font-black text-2xl leading-none" style={{ color: "var(--foreground)" }}>{car.price}</p>
           </div>
           
+          {/* Quick CTA */}
           <Link
             href={`/car/${car.id}`}
             className="flex items-center gap-2 text-sm font-bold transition-all group/link pb-1 hover:brightness-90 outline-none"
             style={{ color: "#fe2c55" }}
           >
             View Details
-            <span className="w-9 h-9 rounded-full flex items-center justify-center transition-all group-hover/link:translate-x-1 shadow-sm" style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)" }}>
+            <span className="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover/link:translate-x-1" style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)" }}>
               <ArrowRight className="w-4 h-4" />
             </span>
           </Link>

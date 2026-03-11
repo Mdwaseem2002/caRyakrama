@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShieldCheck, ArrowRight, CheckCircle2, SlidersHorizontal, ChevronDown } from "lucide-react";
+import { Heart, ShieldCheck, ArrowRight, CheckCircle2, SlidersHorizontal, ChevronDown, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useWishlist } from "@/context/WishlistContext";
 import { useEffect, useRef } from "react";
@@ -24,6 +24,7 @@ export const cars = [
     odometer: "62,000 kms",
     condition: "Excellent",
     inspectionScore: "9.8/10",
+    reportPrice: "₹299",
     inspectionSummary: [
       "Engine health: Perfect",
       "Transmission: Smooth",
@@ -41,6 +42,7 @@ export const cars = [
     odometer: "14,000 kms",
     condition: "Like New",
     inspectionScore: "9.9/10",
+    reportPrice: "₹299",
     inspectionSummary: [
       "4x4 System tested: 100%",
       "Suspension: Perfect",
@@ -58,6 +60,7 @@ export const cars = [
     odometer: "28,000 kms",
     condition: "Very Good",
     inspectionScore: "9.5/10",
+    reportPrice: "₹199",
     inspectionSummary: [
       "No accident history",
       "Full service records",
@@ -76,6 +79,7 @@ export const cars = [
     odometer: "18,000 kms",
     condition: "Pristine",
     inspectionScore: "9.9/10",
+    reportPrice: "₹499",
     inspectionSummary: [
       "Air suspension: Tested ok",
       "MBUX System: Updated",
@@ -93,6 +97,7 @@ export const cars = [
     odometer: "32,000 kms",
     condition: "Excellent",
     inspectionScore: "9.6/10",
+    reportPrice: "₹399",
     inspectionSummary: [
       "xDrive system verified",
       "Engine oil recently changed",
@@ -110,6 +115,7 @@ export const cars = [
     odometer: "5,000 kms",
     condition: "Brand New",
     inspectionScore: "10/10",
+    reportPrice: "₹299",
     inspectionSummary: [
       "Factory fresh condition",
       "Still under OEM warranty",
@@ -274,6 +280,10 @@ function CarCard({ car, index }: { car: typeof cars[0], index: number }) {
               </li>
             ))}
           </ul>
+          <div className="mt-8 flex items-center gap-2 text-[11px] font-bold text-white uppercase tracking-widest border-t border-white/20 pt-4">
+            <Lock className="w-3.5 h-3.5" />
+            Full report available for {car.reportPrice || "₹299"}
+          </div>
         </div>
       </div>
       
