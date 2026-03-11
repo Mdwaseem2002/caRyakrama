@@ -15,9 +15,10 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'caRya.krama', href: '/' },
+    { label: 'Buy', href: '/BuyCar' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Testimonials', href: '/testimonials' },
-    { label: 'Wishlist', href: '/wishlist' },
+    { label: 'Contact Us', href: '/contact-us' },
   ];
 
   const btnClass = `flex items-center justify-center w-10 h-10 md:w-[44px] md:h-[44px] rounded-full transition-colors ${
@@ -70,11 +71,6 @@ export default function Navbar() {
           {/* Call Button */}
           <button className={`hidden sm:flex ${btnClass}`} title="Call Us">
             <Phone className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#fe2c55] fill-[#fe2c55]" strokeWidth={0} />
-          </button>
-
-          {/* WhatsApp Button */}
-          <button className={`hidden sm:flex ${btnClass}`} title="WhatsApp">
-            <MessageCircle className="w-4 h-4 md:w-[18px] md:h-[18px] text-green-500 fill-green-500" strokeWidth={0} />
           </button>
 
           {/* Bell / Notifications Button */}
@@ -188,12 +184,6 @@ export default function Navbar() {
               >
                 <Phone className="w-4 h-4 mr-2" />
                 Call Us
-              </button>
-              <button
-                className="flex items-center justify-center w-full py-3.5 rounded-[20px] font-bold text-sm transition-colors text-white bg-green-500"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                WhatsApp
               </button>
             </div>
 

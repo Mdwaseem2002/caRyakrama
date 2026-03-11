@@ -1,7 +1,6 @@
 import Hero from "@/Home/Hero";
 import ValueProp from "@/Home/ValueProp";
 import Card from "@/Home/Card";
-import UsedCar from "@/Home/UsedCar";
 import DiverseBusiness from "@/Home/DiverseBusiness";
 import OurStory from "@/Home/OurStory";
 
@@ -12,7 +11,6 @@ export default function Home() {
       <ValueProp />
       <DiverseBusiness />
       <Card />
-      <UsedCar />
       <OurStory />
     </>
   );

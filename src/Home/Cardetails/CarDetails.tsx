@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Heart, Phone, CreditCard, ShieldCheck, CheckCircle2, Calendar, Gauge, Award, Wrench, Car } from "lucide-react";
 import { cars } from "../Card";
 import { useWishlist } from "@/context/WishlistContext";
+import ViewFullReport from "./ViewFullReport";
 
 export default function CarDetails({ id }: { id: string }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -99,26 +100,7 @@ export default function CarDetails({ id }: { id: string }) {
           </div>
 
           {/* Details & Inspection Section */}
-          <div className="p-6 md:p-8 rounded-2xl md:rounded-[2rem] shadow-sm" style={{ backgroundColor: "var(--card-bg)", border: "1px solid var(--border)" }}>
-            <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
-               <div className="flex items-center gap-3">
-                 <ShieldCheck className="w-8 h-8 text-[#10b981]" />
-                 <h2 className="text-xl md:text-2xl font-bold" style={{ color: "var(--foreground)"}}>Inspection Summary</h2>
-               </div>
-               <span className="md:ml-auto w-fit bg-[#10b981]/10 text-[#10b981] font-bold px-4 py-1.5 rounded-full text-xs md:text-sm border border-[#10b981]/20">
-                 Score: {car.inspectionScore}
-               </span>
-            </div>
-            
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {car.inspectionSummary?.map((point, i) => (
-                <li key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ border: "1px solid var(--border)", background: "var(--background)" }}>
-                  <CheckCircle2 className="w-5 h-5 text-[#10b981] shrink-0" />
-                  <span className="font-semibold text-sm md:text-base" style={{ color: "var(--foreground)" }}>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ViewFullReport carId={id} />
         </div>
 
         {/* ── RIGHT: PRICING & CTA SIDEBAR ── */}

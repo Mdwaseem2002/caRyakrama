@@ -67,10 +67,10 @@ export default function OurStory() {
           </p>
           
           <Link 
-            href="/about"
+            href="/BuyCar"
             className="inline-flex items-center gap-2 text-sm font-bold text-[#3b82f6] hover:text-[#2563eb] transition-colors group mt-4"
           >
-            Learn More 
+            Explore Our Cars 
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

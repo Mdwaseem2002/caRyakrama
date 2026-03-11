@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsApp from "@/Connect/WhatsApp";
 import { WishlistProvider } from "@/context/WishlistContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <WishlistProvider>
             <Navbar />
             {children}
+            <WhatsApp />
             <Footer />
           </WishlistProvider>
         </ThemeProvider>

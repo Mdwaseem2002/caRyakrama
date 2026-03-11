@@ -63,14 +63,14 @@ export default function Contact() {
         {/* Right: Map + Address */}
         <div className="flex flex-col gap-4">
           {/* Address Header */}
-          <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-5">
+          <div className="rounded-2xl shadow-sm p-4 sm:p-5" style={{ backgroundColor: "var(--card-bg)" }}>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-2">
               <div>
-                <h2 className="font-bold text-gray-900 text-base mb-1">
+                <h2 className="font-bold text-base mb-1" style={{ color: "var(--foreground)" }}>
                   CaRyalaya Bengaluru
                 </h2>
-                <p className="text-gray-500 text-sm flex items-start gap-1">
-                  <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-primary" />
+                <p className="text-sm flex items-start gap-1" style={{ color: "var(--muted)" }}>
+                  <MapPin className="w-4 h-4 shrink-0 mt-0.5" style={{ color: "#fe2c55" }} />
                   Coffee Day Near BDA Complex, RT Nagar<br />
                   Bengaluru 560032, Karnataka, India
                 </p>
@@ -79,7 +79,11 @@ export default function Contact() {
                 href="https://maps.google.com/?q=CaRyalaya+RT+Nagar+Bengaluru"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-red-50 text-primary text-xs font-semibold px-4 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-colors whitespace-nowrap self-start sm:self-auto"
+                className="inline-flex items-center gap-1 text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap self-start sm:self-auto"
+                style={{ 
+                  backgroundColor: "color-mix(in srgb, #fe2c55 10%, transparent)", 
+                  color: "#fe2c55"
+                }}
               >
                 <MapPin className="w-3.5 h-3.5" />
                 Get directions

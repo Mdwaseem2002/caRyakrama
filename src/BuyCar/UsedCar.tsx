@@ -120,6 +120,78 @@ const usedCars: UsedCarData[] = [
     inspectionSummary: ["DSG gearbox tested OK", "Full service history available", "Original paint body", "New battery installed"],
     isNewArrival: false, isFeatured: true, reportPrice: "₹299",
   },
+  {
+    id: 107,
+    name: "2021 Kia Seltos GTX+ DCT",
+    make: "Kia", model: "Seltos", year: "2021",
+    kms: "31,200 kms", fuel: "Petrol", transmission: "Automatic",
+    price: "₹15.75 Lakh", originalPrice: "₹16.50 Lakh", savings: "Save ₹75,000",
+    location: "Koramangala, Bangalore",
+    image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "9.3/10", condition: "Excellent",
+    inspectionSummary: ["Turbo engine performance verified", "360-cam operational", "Ventilated seats functional", "New brake pads installed"],
+    isNewArrival: true, isFeatured: true, reportPrice: "₹349",
+  },
+  {
+    id: 108,
+    name: "2019 Toyota Innova Crysta 2.4V",
+    make: "Toyota", model: "Innova", year: "2019",
+    kms: "68,000 kms", fuel: "Diesel", transmission: "Manual",
+    price: "₹18.90 Lakh", originalPrice: "₹19.50 Lakh", savings: "Save ₹60,000",
+    location: "Indiranagar, Bangalore",
+    image: "https://images.unsplash.com/photo-1567818735868-e71b99932e29?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "9.0/10", condition: "Very Good",
+    inspectionSummary: ["Suspension overhauled recently", "Clutch plate in good health", "Zero underbody rust", "Service records up-to-date"],
+    isNewArrival: false, isFeatured: false, reportPrice: "₹499",
+  },
+  {
+    id: 109,
+    name: "2022 MG ZS EV Exclusive",
+    make: "MG", model: "ZS EV", year: "2022",
+    kms: "14,500 kms", fuel: "Electric", transmission: "Automatic",
+    price: "₹19.25 Lakh", originalPrice: "₹20.50 Lakh", savings: "Save ₹1.25 Lakh",
+    location: "HSR Layout, Bangalore",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "9.8/10", condition: "Pristine",
+    inspectionSummary: ["Battery health at 99%", "Software up-to-date", "Fast charging module tested", "Panaromic sunroof smooth"],
+    isNewArrival: true, isFeatured: true, reportPrice: "₹399",
+  },
+  {
+    id: 110,
+    name: "2018 Jeep Compass Limited PLUS",
+    make: "Jeep", model: "Compass", year: "2018",
+    kms: "55,400 kms", fuel: "Diesel", transmission: "Manual",
+    price: "₹12.45 Lakh", originalPrice: "₹13.20 Lakh", savings: "Save ₹75,000",
+    location: "Whitefield, Bangalore",
+    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "8.7/10", condition: "Good",
+    inspectionSummary: ["4x2 transmission smooth", "Infotainment updated", "Leather seats cleaned & polished", "Tires good for 15k kms more"],
+    isNewArrival: false, isFeatured: false, reportPrice: "₹349",
+  },
+  {
+    id: 111,
+    name: "2021 BMW 3 Series 330i M Sport",
+    make: "BMW", model: "3 Series", year: "2021",
+    kms: "28,000 kms", fuel: "Petrol", transmission: "Automatic",
+    price: "₹42.00 Lakh", originalPrice: "₹45.00 Lakh", savings: "Save ₹3 Lakh",
+    location: "Lavelle Road, Bangalore",
+    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "9.5/10", condition: "Excellent",
+    inspectionSummary: ["Full BMW service history", "Insurance valid till 2025", "BSI package active", "M-Sport features verified"],
+    isNewArrival: false, isFeatured: true, reportPrice: "₹999",
+  },
+  {
+    id: 112,
+    name: "2020 Mahindra XUV500 W11",
+    make: "Mahindra", model: "XUV500", year: "2020",
+    kms: "42,800 kms", fuel: "Diesel", transmission: "Automatic",
+    price: "₹14.85 Lakh", originalPrice: "₹15.50 Lakh", savings: "Save ₹65,000",
+    location: "Hebbal, Bangalore",
+    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=800&auto=format&fit=crop",
+    inspectionScore: "8.9/10", condition: "Very Good",
+    inspectionSummary: ["Engine noise within limits", "A/C cooling optimized", "Reverse camera crystal clear", "Brakes recently checked"],
+    isNewArrival: true, isFeatured: false, reportPrice: "₹299",
+  },
 ];
 
 const filterOptions = ["All Cars", "New Arrivals", "Featured"];
@@ -400,26 +472,21 @@ function UsedCarCard({ car, index }: { car: UsedCarData; index: number }) {
         </p>
 
         {/* CTAs */}
-        <div className="mt-auto flex flex-col gap-2.5 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
-          {/* Primary: View Details */}
+        <div className="mt-auto flex items-end justify-between pt-5" style={{ borderTop: "1px solid var(--border)" }}>
+          <div className="flex flex-col">
+            <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--muted)" }}>Cash Price</p>
+            <p className="font-black text-2xl leading-none" style={{ color: "var(--foreground)" }}>{car.price}</p>
+          </div>
+          
           <Link
             href={`/car/${car.id}`}
-            className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ background: "#fe2c55", boxShadow: "0 4px 14px rgba(254,44,85,0.3)" }}
+            className="flex items-center gap-2 text-sm font-bold transition-all group/link pb-1 hover:brightness-90 outline-none"
+            style={{ color: "#fe2c55" }}
           >
             View Details
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-
-          {/* Secondary: View Inspection Report */}
-          <Link
-            href={`/car/${car.id}/inspection`}
-            className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.01]"
-            style={{ background: "color-mix(in srgb, #fe2c55 8%, var(--card-bg))", color: "#fe2c55", border: "1px solid color-mix(in srgb, #fe2c55 25%, transparent)" }}
-          >
-            <FileSearch className="w-4 h-4" />
-            View Inspection Report · {car.reportPrice}
-            <Lock className="w-3.5 h-3.5 opacity-60" />
+            <span className="w-9 h-9 rounded-full flex items-center justify-center transition-all group-hover/link:translate-x-1 shadow-sm" style={{ background: "color-mix(in srgb, #fe2c55 10%, transparent)" }}>
+              <ArrowRight className="w-4 h-4" />
+            </span>
           </Link>
         </div>
       </div>
