@@ -4,12 +4,15 @@ import React from "react";
 import Image from "next/image";
 import { ShieldCheck, CheckCircle2, ChevronRight } from "lucide-react";
 import { cars } from "../Card";
+import ViewReop from "@/Details/Popup/ViewReop";
+import { useState } from "react";
 
 interface ViewFullReportProps {
   carId: string | number;
 }
 
 export default function ViewFullReport({ carId }: ViewFullReportProps) {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   // Find the car based on ID
   const car = cars.find((c) => c.id.toString() === carId.toString()) || cars[0];
 
@@ -120,7 +123,10 @@ export default function ViewFullReport({ carId }: ViewFullReportProps) {
               For full transparency, you can check the final inspection report here.
             </p>
 
-            <button className="flex items-center gap-2 text-[#fe2c55] font-extrabold text-lg group hover:gap-3 transition-all underline-offset-4 hover:underline">
+            <button 
+              onClick={() => setIsPopupOpen(true)}
+              className="flex items-center gap-2 text-[#fe2c55] font-extrabold text-lg group hover:gap-3 transition-all underline-offset-4 hover:underline"
+            >
               View full report
               <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
@@ -128,6 +134,10 @@ export default function ViewFullReport({ carId }: ViewFullReportProps) {
         </div>
       </div>
 
+      <ViewReop 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsPopupOpen(false)} 
+      />
     </div>
   );
 }

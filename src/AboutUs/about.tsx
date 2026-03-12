@@ -111,10 +111,10 @@ export default function About() {
           ].map((item, idx) => (
             <div 
               key={idx}
-              className="quality-card flex flex-col items-center gap-5 p-8 rounded-[2rem] border transition-all duration-300 hover:shadow-2xl text-center"
-              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}
+              className="quality-card group flex flex-col items-center gap-5 p-8 rounded-[2rem] border border-[var(--border)] hover:border-[#fe2c55] transition-all duration-300 hover:shadow-2xl text-center"
+              style={{ background: "var(--card-bg)" }}
             >
-              <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#fe2c55]/10 flex items-center justify-center">
+              <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#fe2c55]/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_15px_rgba(254,44,85,0.3)]">
                 <item.icon className="w-8 h-8 text-[#fe2c55]" strokeWidth={2} />
               </div>
               <div>
