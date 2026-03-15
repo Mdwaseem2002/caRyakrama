@@ -51,7 +51,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Desktop Navigation Links */}
+        {/* Center: Desktop Navigation Links (Hidden on mobile) */}
         <nav className="hidden lg:flex items-center space-x-10">
           {navLinks.map((item) => (
             <Link

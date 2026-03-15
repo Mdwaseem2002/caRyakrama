@@ -27,17 +27,10 @@ const tickerItems = [
   { icon: CheckCircle2,  label: "Verified Cars Only"           },
   { icon: ScanSearch,    label: "Inspected for Your Confidence" },
   { icon: Trophy,        label: "Handpicked for Enthusiasts"   },
-  { icon: ShieldCheck,   label: "150-Point Inspection"         },
-  { icon: ClipboardList, label: "Full Transparency"            },
-  { icon: CheckCircle2,  label: "Verified Cars Only"           },
-  { icon: ScanSearch,    label: "Inspected for Your Confidence" },
-  { icon: Trophy,        label: "Handpicked for Enthusiasts"   },
-  { icon: ShieldCheck,   label: "150-Point Inspection"         },
   { icon: ClipboardList, label: "Full Transparency"            },
 ];
 
 const trustBadges = [
-  { icon: ShieldCheck, label: "150-Point Inspected" },
   { icon: BadgeCheck,  label: "Verified Listings"   },
   { icon: Sparkles,    label: "Handpicked Selection" },
 ];
@@ -107,18 +100,15 @@ export default function Hero() {
           }}
         />
 
-        {/* ── TOP TICKER BAR ── */}
+        {/* ── TOP POINTERS BAR ── */}
         <div
-          className="relative w-full overflow-hidden py-2"
+          className="relative w-full py-2 sm:py-3"
           style={{ background: "rgba(254,44,85,0.97)", zIndex: 10 }}
         >
-          <div
-            className="flex gap-10 whitespace-nowrap"
-            style={{ animation: "ticker-scroll 30s linear infinite" }}
-          >
+          <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-10 px-4 max-w-7xl mx-auto">
             {tickerItems.map(({ icon: Icon, label }, i) => (
-              <span key={i} className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-white shrink-0">
-                <Icon className="w-3.5 h-3.5 shrink-0" />
+              <span key={i} className="inline-flex items-center gap-1.5 text-[9px] sm:text-[11px] font-bold tracking-widest uppercase text-white shrink-0">
+                <Icon className="w-3 sm:w-3.5 h-3 sm:h-3.5 shrink-0" />
                 {label}
               </span>
             ))}
@@ -135,8 +125,11 @@ export default function Hero() {
             {/* ── GROUP 1: Headline ── */}
             <div ref={group1Ref} className="flex flex-col items-center gap-5">
               {/* Powered By Badge */}
-              <div
-                className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 text-[10px] font-black tracking-[0.2em] uppercase text-white mb-2 shadow-2xl"
+              <a
+                href="https://www.instagram.com/car.diologist/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 text-[10px] font-black tracking-[0.2em] uppercase text-white mb-2 shadow-2xl transition-all hover:scale-105 hover:bg-white/5 active:scale-95"
                 style={{ 
                   background: "rgba(0,0,0,0.45)", 
                   backdropFilter: "blur(12px)",
@@ -150,12 +143,12 @@ export default function Hero() {
                   WebkitTextFillColor: "transparent",
                   letterSpacing: "0.25em"
                 }}>
-                  Powered by Cardiolist
+                  Powered by car.diologist
                 </span>
-              </div>
+              </a>
 
               {/* Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-2xl">
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.2] sm:leading-[1.12] tracking-tight text-white drop-shadow-2xl px-2">
                 Every Car You See is{" "}
                 <span style={{ color: "#fe2c55" }}>Handpicked,</span>
                 <br className="hidden md:block" />
@@ -167,17 +160,15 @@ export default function Hero() {
             {/* ── GROUP 2: Subheadline + USP Badge ── */}
             <div ref={group2Ref} className="flex flex-col items-center gap-5">
               <p className="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-white font-medium drop-shadow-lg">
-                Say goodbye to wasted time and uncertainty. caRya.krama brings you only the best —
-                inspected used cars you can trust.
+                Say good bye to uncertainty in used car market, caRya.krama brings you the best cars you can trust
               </p>
 
-              {/* USP Badge */}
               <div
-                className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white"
-                style={{ background: "rgba(255,255,255,0.10)", backdropFilter: "blur(8px)" }}
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-white/20 text-[11px] sm:text-sm font-black tracking-[0.1em] sm:tracking-[0.15em] uppercase text-white shadow-xl"
+                style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)" }}
               >
-                <span className="w-2 h-2 rounded-full bg-[#fe2c55] animate-pulse shrink-0" />
-                The Best — or Nothing.
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#fe2c55] animate-pulse shrink-0" />
+                The Best Car or Nothing.
               </div>
             </div>
 

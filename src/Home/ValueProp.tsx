@@ -80,7 +80,7 @@ export default function ValueProp() {
             >
               The caRya.krama Difference
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6" style={{ color: "var(--foreground)" }}>
+            <h2 className="text-2xl md:text-5xl font-extrabold mb-4 sm:mb-6" style={{ color: "var(--foreground)" }}>
               Built on Trust. Driven by <span style={{ color: "#fe2c55" }}>Quality.</span>
             </h2>
             <p className="text-lg" style={{ color: "var(--muted)" }}>
@@ -101,7 +101,7 @@ export default function ValueProp() {
             <motion.div
               key={prop.id}
               variants={cardVariants}
-              className="group relative p-8 rounded-[2rem] h-full flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+              className="group relative p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] h-full flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
               style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
             >
               {/* Subtle gradient hover effect inside the card */}

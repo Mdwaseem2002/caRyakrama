@@ -157,7 +157,7 @@ export default function Footer() {
 
             <p style={{ color: muted }} className="text-base md:text-lg font-medium leading-relaxed mb-8 max-w-[280px]">
               Handpicked. Inspected. Exceptional. <br/>
-              <span className="font-bold uppercase tracking-wider text-xs block mt-2" style={{ color: textTitle }}>The Best — or Nothing.</span>
+              <span className="font-black uppercase tracking-[0.15em] text-[13px] block mt-3" style={{ color: textTitle }}>The Best Car or Nothing.</span>
             </p>
 
             {/* Social icons */}
